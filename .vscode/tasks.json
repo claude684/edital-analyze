@@ -1,0 +1,64 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Instalar dependências",
+            "type": "shell",
+            "command": "${command:python.interpreterPath} -m pip install -r requirements.txt",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Baixar modelo spaCy (pt_core_news_sm)",
+            "type": "shell",
+            "command": "${command:python.interpreterPath} -m spacy download pt_core_news_sm",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Setup completo (pip + spaCy)",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Instalar dependências",
+                "Baixar modelo spaCy (pt_core_news_sm)"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Rodar API (Uvicorn)",
+            "type": "shell",
+            "command": "${command:python.interpreterPath} -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "Rodar Testes",
+            "type": "shell",
+            "command": "${command:python.interpreterPath} -m pytest -v tests/",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Rodar Testes com Coverage",
+            "type": "shell",
+            "command": "${command:python.interpreterPath} -m pytest --cov=app --cov-report=term-missing --cov-report=html tests/",
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "Formatar código (black)",
+            "type": "shell",
+            "command": "${command:python.interpreterPath} -m black app/ tests/",
+            "problemMatcher": []
+        },
+        {
+            "label": "Lint (ruff)",
+            "type": "shell",
+            "command": "${command:python.interpreterPath} -m ruff check app/ tests/",
+            "problemMatcher": []
+        }
+    ]
+}

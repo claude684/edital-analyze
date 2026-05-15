@@ -1,0 +1,86 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# === Virtual Environments ===
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# === Testing ===
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# === Type Checking ===
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+
+# === IDEs ===
+.idea/
+*.swp
+*.swo
+*~
+
+# VS Code: mantemos a pasta .vscode versionada (launch.json, tasks.json, settings.json)
+# mas ignoramos arquivos locais que cada dev pode ter
+.vscode/*.local
+
+# === OS ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Logs ===
+logs/
+*.log
+
+# === Outputs gerados ===
+outputs/*
+!outputs/.gitkeep
+
+# === Dados de entrada (não commitar editais reais) ===
+data/*
+!data/.gitkeep
+!data/README.md
+
+# === Jupyter ===
+.ipynb_checkpoints
+*.ipynb
+
+# === Distribuição ===
+*.tar.gz
+*.zip
