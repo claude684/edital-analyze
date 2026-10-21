@@ -84,3 +84,6 @@ data/*
 # === Distribuição ===
 *.tar.gz
 *.zip
+
+# === Claude Code local session artifacts (plugin configs may hold credentials) ===
+.claude/

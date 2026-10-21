@@ -143,8 +143,11 @@ def parse_brazilian_currency(value_str: str) -> Optional[float]:
         if "," in cleaned:
             cleaned = cleaned.replace(".", "").replace(",", ".")
         # Caso só tenha pontos, assumimos que são separadores de milhar
-        # apenas se houver mais de um ponto ou se o ponto não for decimal
-        elif cleaned.count(".") > 1:
+        # se houver mais de um ponto ou se o último grupo tiver 3 dígitos
+        # (no formato BR o decimal usa vírgula, ex.: "1.000" -> 1000)
+        elif "." in cleaned and (
+            cleaned.count(".") > 1 or len(cleaned.rsplit(".", 1)[1]) == 3
+        ):
             cleaned = cleaned.replace(".", "")
 
         return float(cleaned)
